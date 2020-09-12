@@ -1,0 +1,54 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<table class="table table-bordered text-center">
+    <tr>
+        <td> <!-- product image -->
+            <img class="rounded-circle" style="width:120px;" src="{{ product.image.url }}">
+        </td>
+
+        <td> <!-- short desciption -->
+            <h4><a class="article-title" href="#">{{ product.name }}</a></h4>
+            <p class="text-muted">{{ product.short_description }}</p>
+            <p class="text-muted">{{ product.long_description }}</p>
+        </td>
+
+        <td> <!-- price -->
+            <p class="product-list-price mb-0 ">{{ product.price }} zł</p>
+
+            <!-- availability -->
+            {% if product.availability is True %}
+                <p class="text-muted small mb-2">in stock!</p>
+            {% else %}
+                <p class="text-muted small mb-2">out of stock</p>
+            {% endif %}
+
+            <!-- cart / add to cart -->
+            {% if product in current_order_products %}
+                <a href="{% url 'shopping_cart' %}" class="btn btn-sm btn-outline-secondary">Go to Cart</a>
+            {% else %}
+
+
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-info float-right mt-3">Proceed to Checkout</button>
+                    </div>
+                </fieldset>
+            </form>
+
+
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-sm btn-secondary">Add to Cart</a>
+
+
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-3 pb-1">Update your account</legend>
+            {{ user_update_form|crispy }}
+            {{ account_update_form|crispy }}
+        </fieldset>
+
+        <div class="form-group text-center">
+            <button class="btn btn-outline-info">Update</button>
+        </div>
+
+
+    </form>
+
+{% endblock %}

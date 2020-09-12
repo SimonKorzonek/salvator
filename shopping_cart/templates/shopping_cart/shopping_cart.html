@@ -1,0 +1,68 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<section>
+    <div class="row">
+
+        <div class="row mb-3">
+            <a href="#"class="progress-indicator-text-active ml-4">CART</a>
+            <i class="progress-indicator-icon fas fa-angle-right"></i>
+            <a href="{% url 'delivery' %}" class="progress-indicator-text">DELIVERY</a>
+            <i class="progress-indicator-icon fas fa-angle-right"></i>
+            <a href="{% url 'checkout' %}" class="progress-indicator-text">CHECKOUT</a>
+            <i class="progress-indicator-icon fas fa-angle-right"></i>
+            <p class="progress-indicator-text">SUCCESS
+        </div>
+
+        <table class="table table-hover table-bordered text-center">
+
+            {% for item in order.get_cart_items %}
+                <tr>
+                    <td>x{{ item.quantity }}</td>
+
+                    <td> <!-- product/delete cell -->
+                        <small>{{ item.product.name }}</small>
+                        <span class="pull-right">
+                            <a href="{% url 'delete_item' item.id %}" data-balloon="remove this item from cart" class="text-danger" onclick="return confirm_delete();"><small>delete</small></a>
+                        </span>
+                    </td>
+
+                    <!-- price cell -->
+                    <td width=15%>{{ item.product.price }} zł</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan= 3> You have not added any items yet.</td>
+                </tr>
+            {% endfor %}
+
+            <tr> <!-- currennt cart total -->
+                {% if order.get_cart_total != None %}
+                    <td colspan=2>
+                        <strong class="pull-right">Cart Total:</strong>
+                    </td>
+
+                    <td >
+                        <strong>{{ order.get_cart_total }} zł</strong>
+                    </td>
+                {% endif %}
+            </tr>
+        </table>
+
+        <!-- checkout / add products to cart -->
+        <div class="col">
+            <a href="{% url 'product_list' %}" class="btn btn-outline-info">
+                {% if order %}
+                    Continue Shopping
+                {% else %}
+                    Add Items to Cart
+                {% endif %}
+            </a>
+            {% if order.get_cart_items %}
+                <a href="{% url 'delivery' %}" class="btn btn-info float-right mr-3">Proceed to Delivery</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

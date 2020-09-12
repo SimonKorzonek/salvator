@@ -1,0 +1,52 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row mb-3">
+    <a href="{% url 'shopping_cart' %}"class="progress-indicator-text ml-4">CART</a>
+    <i class="progress-indicator-icon fas fa-angle-right"></i>
+    <a href="{% url 'delivery' %}" class="progress-indicator-text-active">DELIVERY</a>
+    <i class="progress-indicator-icon fas fa-angle-right"></i>
+    <a href="{% url 'checkout' %}" class="progress-indicator-text">CHECKOUT</a>
+    <i class="progress-indicator-icon fas fa-angle-right"></i>
+    <p class="progress-indicator-text">SUCCESS</p>
+</div>
+
+
+<table class="table table-bordered text-center table-hover">
+
+    <tr>
+        <td width=15%>
+            PRODUCTS <small>({{ order.get_items_number }})</small>
+        </td>
+
+        <td class="text-left">
+            {% for item in order.get_cart_items %}
+                <small class="text-muted ml-3">{{ item }}</small>
+            {% endfor %}
+        </td>
+
+        <td>
+            {{ order.get_cart_total }}zł
+        </td>
+    </tr>
+</table>
+
+
+
+<div class="content-section">
+
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-info float-right mt-3">Proceed to Checkout</button>
+            </div>
+        </fieldset>
+    </form>
+    <a href="{% url 'shopping_cart' %}"><button class="btn btn-outline-info float-left" style="position:relative; top:-54px;">Back to Cart</button></a>
+</div>
+
+{% endblock %}

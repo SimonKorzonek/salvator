@@ -1,0 +1,67 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <!-- name / update account -->
+    <div class="row border-bottom">
+        <div class="col-auto">
+            <h1 class="main-headers">{{ user.first_name }} {{ user.last_name }}</h1>
+        </div>
+        <div class="col-auto mt-2">
+            <a class="small" href="{% url 'update_account' %}">edit account</a>
+        </div>
+    </div>
+
+    <!-- username -->
+    <div class="row mt-3">
+        <div class="col">
+            Username
+        </div>
+        <div class="col">
+            <p class="ml-2">{{ user.username }}</p>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="row">
+        <div class="col">
+            E-mail
+        </div>
+        <div class="col">
+            <p class="ml-2">{{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- street / houser numer -->
+    <div class="row">
+        <div class="col">
+            Street / house no.
+        </div>
+        <div class="col">
+            <p class="ml-2">{{ user.account.address }}</p>
+        </div>
+    </div>
+
+    <!--  Postcode City-->
+    <div class="row">
+        <div class="col">
+            Postcode / City
+        </div>
+        <div class="col">
+            <p class="ml-2">{{ user.account.postcode }} {{ user.account.city }}</p>
+        </div>
+    </div>
+
+    <!-- payment method -->
+    <div class="row">
+        <div class="col">
+            Payment method
+        </div>
+        <div class="col">
+            <p class="ml-2">{{ user.account.payment_method }}</p>
+        </div>
+    </div>
+
+    <h4 class="border-bottom pb-1 mt-4">Your orders</h4>
+
+{% endblock %}

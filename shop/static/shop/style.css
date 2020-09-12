@@ -1,0 +1,85 @@
+body{
+    margin-top: 5rem;}
+
+.main-headers{
+    font-size: 150%;
+    margin-left: 15px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: rgba(0, 0, 0, 0.7);}
+
+nav{
+    background-color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08 );}
+
+.navbar-brand{
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-weight: 600;}
+
+.navbar-brand:hover{
+    color: black;}
+
+.site-header .navbar-nav .nav-link{
+    color: rgba(0, 0, 0, 0.9);}
+
+.site-header .navbar-nav .nav-link:hover{
+    color: black;}
+
+
+.article-title{
+    color: rgba(0, 0, 0, 0.7);}
+
+a.article-title:hover{
+    color: #428bca;
+    text-decoration: none;}
+
+.navbar-toggler-icon{
+    color: white;}
+
+.content-section{
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;}
+
+.article-content{
+    white-space: pre-line;}
+
+
+.product-list-price{
+    font-size: 120%;}
+
+.product-list-title{
+    font-size: 120%;}
+
+
+
+
+
+
+.progress-indicator-text, .progress-indicator-text-active{
+    font-size: ;}
+
+.progress-indicator-text{
+    letter-spacing: 1px;
+    margin: 4px 0px 0px 0px;
+    color: rgba(0, 0, 0, 0.8);}
+
+.progress-indicator-text-active{
+    color: rgba(0, 0, 0, 0.8);
+    font-size:;
+    position: relative;
+    top: ;
+    margin: 3px 0px 0px 0px;}
+
+.progress-indicator-icon{
+    color: rgba(0, 0, 0, 0.4);
+    margin: 10px 7px 0px 10px;}
+
+.progress-indicator-text-active:hover, .progress-indicator-text:hover{
+    text-decoration: none;
+    color: black;}
