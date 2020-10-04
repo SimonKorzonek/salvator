@@ -39,7 +39,7 @@
         {% for product in products %}
             <tr>
                 <td> <!-- product image -->
-                    <img class="rounded-circle" style="width:100px;" src="{{ product.image.url }}">
+                    <img class="rounded-circle" style="width: 100px;" src="{{ product.image.url }}">
                 </td>
 
                 <td> <!-- short desciption -->
@@ -61,11 +61,7 @@
                     {% if product in current_order_products %}
                         <a href="{% url 'shopping_cart' %}" class="btn btn-sm btn-outline-secondary">Go to Cart</a>
                     {% else %}
-
-                        
                         <a href="{% url 'add_to_cart' product.id %}" class="btn btn-sm btn-secondary">Add to Cart</a>
-
-
                     {% endif %}
                 </td>
             </tr>

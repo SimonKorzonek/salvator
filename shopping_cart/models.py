@@ -1,9 +1,10 @@
 from django.db import models
 from products.models import Product
 from users.models import Account
+from phone_field import PhoneField
 
 
-# update_cart view function - updating OrderItem model
+# update_cart view function - updating OrderItem instance
 # owner of cart optional
 # if owner exists populate delivery form with his account information
 # registration form asking about first and last name and address
@@ -32,6 +33,9 @@ class Delivery(models.Model):
         representation = f"{self.delivery_option} (+{self.option_price}zł)"
         return representation
 
+    class Meta:
+        verbose_name_plural = "deliveries"
+
 
 
 class Order(models.Model):
@@ -48,10 +52,10 @@ class Order(models.Model):
     is_sent = models.BooleanField(default=False)
 
     # ADDRESS
-    address = models.CharField(max_length=120, default=None)
-    postcode = models.CharField(max_length=6, default=None)
-    city = models.CharField(max_length=30, default=None)
-    phone_number = models.IntegerField(default=None, null=True)
+    address = models.CharField(max_length=120, default=None, null=True)
+    postcode = models.CharField(max_length=6, default=None, null=True)
+    city = models.CharField(max_length=30, default=None, null=True)
+    phone_number = PhoneField(blank=True, null=True)
 
     def get_cart_items(self):
         return self.items.all()

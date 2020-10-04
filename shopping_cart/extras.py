@@ -15,5 +15,5 @@ def get_user_pending_order(request):
 
 def generate_order_id():
     date = datetime.date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
-    random_string = "".join([random.choice(string.digits) for soundt in range(3)])
+    random_string = "".join([random.choice(string.digits) for rand in range(3)])
     return date + random_string

@@ -27,7 +27,6 @@ nav{
 .site-header .navbar-nav .nav-link:hover{
     color: black;}
 
-
 .article-title{
     color: rgba(0, 0, 0, 0.7);}
 
@@ -36,7 +35,13 @@ a.article-title:hover{
     text-decoration: none;}
 
 .navbar-toggler-icon{
-    color: white;}
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.8);}
+
+.navbar-toggler{
+    position: relative;
+    top: 6px;
+    right: -15px;}
 
 .content-section{
     background: #ffffff;
@@ -55,6 +60,9 @@ a.article-title:hover{
 .product-list-title{
     font-size: 120%;}
 
+#cart-items-counter{
+    position: relative;
+    left: -5px;}
 
 
 
@@ -70,9 +78,6 @@ a.article-title:hover{
 
 .progress-indicator-text-active{
     color: rgba(0, 0, 0, 0.8);
-    font-size:;
-    position: relative;
-    top: ;
     margin: 3px 0px 0px 0px;}
 
 .progress-indicator-icon{
@@ -82,3 +87,11 @@ a.article-title:hover{
 .progress-indicator-text-active:hover, .progress-indicator-text:hover{
     text-decoration: none;
     color: black;}
+
+
+
+@media screen and (max-width: 600px){
+    nav-item{
+        text-align: center;
+    }
+}

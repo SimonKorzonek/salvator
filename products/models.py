@@ -3,9 +3,9 @@ from multiselectfield import MultiSelectField
 
 
 categories = ((1, 'kawy'),
-               (2, 'fartuchy'),
-               (3, 'akcesoria'),
-               (5, 'inne'))
+              (2, 'fartuchy'),
+              (3, 'akcesoria'),
+              (5, 'inne'))
 
 class Product(models.Model):
     name = models.CharField(max_length=120)

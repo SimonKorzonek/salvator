@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SALVATOR_SECRET_KEY']
-#SECRET_KEY = '7iljjntrn_1xgxjzdm(_s1oz_o88xsn57_tig@4lanl*%fl)z&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiselectfield',
+    'phone_field'
 ]
 
 MIDDLEWARE = [

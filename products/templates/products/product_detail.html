@@ -1,5 +1,4 @@
 {% extends "shop/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -29,22 +28,7 @@
             {% if product in current_order_products %}
                 <a href="{% url 'shopping_cart' %}" class="btn btn-sm btn-outline-secondary">Go to Cart</a>
             {% else %}
-
-
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    {{ form|crispy }}
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-info float-right mt-3">Proceed to Checkout</button>
-                    </div>
-                </fieldset>
-            </form>
-
-
-            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-sm btn-secondary">Add to Cart</a>
-
-
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-sm btn-secondary">Add to Cart</a>
             {% endif %}
         </td>
     </tr>

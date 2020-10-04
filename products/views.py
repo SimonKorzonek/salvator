@@ -6,6 +6,7 @@ from django.views.generic import DetailView
 
 class ProductDetailView(DetailView):
     model = Product
+    template_name = 'products/product_detail.html'
 
 
 def product_list(request):
@@ -21,7 +22,7 @@ def product_list(request):
             current_order_products = [product.product for product in user_order_items]
 
     context = {
-        'products': Product.objects.all(),
+        'products': objects_list,
         'current_order_products': current_order_products }
 
     return render(request, 'products/product_list.html', context)

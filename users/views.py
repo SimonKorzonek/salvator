@@ -45,7 +45,7 @@ def update_account(request):
 
     return render(request, 'users/update_account.html', context)
 
-#my_profile in tutorial
+
 @login_required
 def orders(request):
     ordering_account = Account.objects.filter(user=request.user).first()
