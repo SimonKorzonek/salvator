@@ -2,41 +2,68 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="row">
-    <!-- productlist header -->
-    <h1 class="main-headers mb-3">See our products</h1>
 
-    <!-- product categories -->
-    <div class="dropdown">
-        <button class="ml-3 btn btn-sm dropdown-toggle" type="button" id="dropdownCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">category</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownCategory">
-            <button class="dropdown-item small" type="button">everything</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item small" type="button">coffe</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item small" type="button">clothing</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item small" type="button">grinders</button>
+<!-- productlist header -->
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <h1 class="main-headers mb-3">See our products</h1>
+            <small id="results-total">(results total: {{ page_obj.paginator.count }})</small>
         </div>
     </div>
 
-    <!-- filter products -->
-    <div class="dropdown">
-        <button class="ml-3 btn btn-sm dropdown-toggle" type="button" id="dropdownFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">filter by</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownFilter">
-            <button class="dropdown-item small" type="button">price ascendig</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item small" type="button">price descending</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item small" type="button">something else</button>
-        </div>
+    <div class="col">
+        <button class="btn btn-sm float-right" type="button" data-toggle="collapse" data-target="#search&sort" aria-expanded="false" aria-controls="search&sort">
+            searching / sorting
+        </button>
     </div>
 </div>
 
 
+<div class="collapse" id="search&sort">
+  <div class="card card-body">
+    <h1 id="search-header" class="main-headers mb-3">Search and Sort</h1>
+
+    <div class="row search-row">
+        <form method="get" action="">
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.name.errors }}
+                {{ form.name.label }}:
+                {{ form.name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.sort_by.errors }}
+                {{ form.sort_by.label }}:
+                {{ form.sort_by }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.category.errors }}
+                {{ form.category.label }}:
+                {{ form.category }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.per_page.errors }}
+                {{ form.per_page.label }}:
+                {{ form.per_page }}
+            </div>
+
+            <div id="search-button">
+                <button class="btn" type="submit">Apply</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <table class="table table-hover text-center">
     <tbody>
-        {% for product in products %}
+        {% for product in object_list %}
+
             <tr>
                 <td> <!-- product image -->
                     <img class="rounded-circle" style="width: 100px;" src="{{ product.image.url }}">
@@ -68,4 +95,6 @@
         {% endfor %}
     </tbody>
 </table>
+
+{% include "shop/_pagination.html" %}
 {% endblock content %}

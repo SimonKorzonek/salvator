@@ -68,8 +68,6 @@ a.article-title:hover{
 
 
 
-.progress-indicator-text, .progress-indicator-text-active{
-    font-size: ;}
 
 .progress-indicator-text{
     letter-spacing: 1px;
@@ -87,6 +85,40 @@ a.article-title:hover{
 .progress-indicator-text-active:hover, .progress-indicator-text:hover{
     text-decoration: none;
     color: black;}
+
+
+
+.pagination{
+    justify-content: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 10px;}
+.current{
+    margin: 0px 15px 0px 15px;
+    color: rgba(0, 0, 0, 0.6);}
+.page-nav{
+    margin: 0px 10px 0px 5px;
+    color: rgba(0, 0, 0, 0.5);}
+.page-nav:hover{
+    text-decoration: none;
+    opacity: 0.8;}
+
+
+
+.fieldWrapper{
+    display: block;
+    text-align: center;
+    margin: 0px 0px 15px 0px;}
+#search-button{
+    text-align: center;}
+#results-total{
+    margin: 12px 0px 0px 7px;
+    color: rgba(0, 0, 0, 0.7);}
+.search-row{
+    color: rgba(0, 0, 0, 0.7);
+    justify-content: center;}
+#search-header{
+    text-align: center;}
+
 
 
 

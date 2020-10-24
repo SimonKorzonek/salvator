@@ -1,22 +1,23 @@
 from django.db import models
-from multiselectfield import MultiSelectField
 
 
-categories = ((1, 'kawy'),
-              (2, 'fartuchy'),
-              (3, 'akcesoria'),
-              (5, 'inne'))
+class Category(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Product(models.Model):
     name = models.CharField(max_length=120)
-    category = MultiSelectField(choices=categories, default=1, max_choices=1)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     short_description = models.TextField(default='product list description')
     long_description = models.TextField(default='product detail description')
     availability = models.BooleanField()
     discount = models.FloatField(default='0')
     quantity_available = models.IntegerField()
-    price = models.IntegerField(default="0")
+    price = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     image = models.ImageField(default='default.jpg', upload_to='product_pics')
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
